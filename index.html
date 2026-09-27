@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Lost &amp; Found | CSI AITR Student Chapter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="brand" data-nav="home">
+        <img src="assets/csi-logo.jpg" alt="CSI Logo" class="brand-logo" />
+        <span class="brand-text">CSI AITR Student Chapter</span>
+      </a>
+
+      <nav class="nav" id="mainNav">
+        <a href="#" class="nav-link active" data-nav="home">Home</a>
+        <a href="#" class="nav-link" data-nav="browse">Browse Items</a>
+        <a href="#" class="nav-link" data-nav="report-lost">Report Lost</a>
+        <a href="#" class="nav-link" data-nav="report-found">Report Found</a>
+        <a href="#" class="nav-link" data-nav="my-reports">My Reports</a>
+      </nav>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HOME -->
+    <section class="page" id="page-home">
+      <div class="container">
+        <div class="hero">
+          <h1>Lost something on campus?</h1>
+          <p class="subtitle">Find lost items or report something you found around AITR.</p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary" data-nav="browse">Browse Items</button>
+            <button class="btn btn-secondary" data-nav="report-lost">Report an Item</button>
+          </div>
+
+          <form class="search-form" id="homeSearchForm">
+            <input type="text" id="homeSearchInput" placeholder="Search for an item..." />
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+        </div>
+
+        <h2 class="section-title">Browse by Category</h2>
+        <div class="category-grid">
+          <button class="category-card" data-category="Electronics">
+            <span class="category-icon">💻</span>
+            <span>Electronics</span>
+          </button>
+          <button class="category-card" data-category="ID Cards">
+            <span class="category-icon">🆔</span>
+            <span>ID Cards</span>
+          </button>
+          <button class="category-card" data-category="Books">
+            <span class="category-icon">📚</span>
+            <span>Books</span>
+          </button>
+          <button class="category-card" data-category="Accessories">
+            <span class="category-icon">🎒</span>
+            <span>Accessories</span>
+          </button>
+          <button class="category-card" data-category="Other">
+            <span class="category-icon">📦</span>
+            <span>Other</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- BROWSE ITEMS -->
+    <section class="page hidden" id="page-browse">
+      <div class="container">
+        <h1 class="page-title">Browse Items</h1>
+
+        <div class="filter-bar">
+          <input type="text" id="browseSearch" placeholder="Search items..." />
+          <select id="categoryFilter">
+            <option value="All">All Categories</option>
+            <option>Electronics</option>
+            <option>ID Cards</option>
+            <option>Books</option>
+            <option>Accessories</option>
+            <option>Other</option>
+          </select>
+          <select id="statusFilter">
+            <option value="All">Lost &amp; Found</option>
+            <option value="Lost">Lost</option>
+            <option value="Found">Found</option>
+          </select>
+          <select id="sortSelect">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+          </select>
+        </div>
+
+        <div class="items-grid" id="itemsGrid"></div>
+        <p class="empty-state hidden" id="browseEmpty">No items match your current filter.</p>
+      </div>
+    </section>
+
+    <!-- REPORT LOST -->
+    <section class="page hidden" id="page-report-lost">
+      <div class="container form-page">
+        <h1 class="page-title">Report a Lost Item</h1>
+        <p class="page-subtitle">Fill in the details below so we can help you find it.</p>
+
+        <form class="report-form" id="lostForm">
+          <div class="form-group">
+            <label for="lostItemName">Item Name *</label>
+            <input type="text" id="lostItemName" required />
+          </div>
+          <div class="form-group">
+            <label for="lostCategory">Category *</label>
+            <select id="lostCategory" required>
+              <option value="">Select a category</option>
+              <option>Electronics</option>
+              <option>ID Cards</option>
+              <option>Books</option>
+              <option>Accessories</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="lostDate">Date Lost *</label>
+            <input type="date" id="lostDate" required />
+          </div>
+          <div class="form-group">
+            <label for="lostLocation">Location *</label>
+            <select id="lostLocation" required>
+              <option value="">Select a location</option>
+              <option>Main Gate</option>
+              <option>Central Library</option>
+              <option>Academic Block</option>
+              <option>Lab Block</option>
+              <option>Cafeteria</option>
+              <option>Seminar Hall</option>
+              <option>Auditorium</option>
+              <option>Sports Ground</option>
+              <option>Parking Area</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="lostDescription">Description *</label>
+            <textarea id="lostDescription" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="lostContactName">Contact Name *</label>
+            <input type="text" id="lostContactName" required />
+          </div>
+          <div class="form-group">
+            <label for="lostContactEmail">Contact Email *</label>
+            <input type="email" id="lostContactEmail" required />
+          </div>
+          <div class="form-group">
+            <label for="lostContactPhone">Contact Phone *</label>
+            <input type="tel" id="lostContactPhone" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Lost Report</button>
+          <p class="form-error hidden" id="lostFormError">Please fill all the required fields correctly.</p>
+        </form>
+
+        <p class="success-msg hidden" id="lostSuccess">Your lost report has been submitted! You can see it under My Reports and Browse Items.</p>
+      </div>
+    </section>
+
+    <!-- REPORT FOUND -->
+    <section class="page hidden" id="page-report-found">
+      <div class="container form-page">
+        <h1 class="page-title">Report a Found Item</h1>
+        <p class="page-subtitle">Found something on campus? Report it here so its owner can reach you.</p>
+
+        <form class="report-form" id="foundForm">
+          <div class="form-group">
+            <label for="foundItemName">Item Name *</label>
+            <input type="text" id="foundItemName" required />
+          </div>
+          <div class="form-group">
+            <label for="foundCategory">Category *</label>
+            <select id="foundCategory" required>
+              <option value="">Select a category</option>
+              <option>Electronics</option>
+              <option>ID Cards</option>
+              <option>Books</option>
+              <option>Accessories</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="foundDate">Date Found *</label>
+            <input type="date" id="foundDate" required />
+          </div>
+          <div class="form-group">
+            <label for="foundLocation">Location *</label>
+            <select id="foundLocation" required>
+              <option value="">Select a location</option>
+              <option>Main Gate</option>
+              <option>Central Library</option>
+              <option>Academic Block</option>
+              <option>Lab Block</option>
+              <option>Cafeteria</option>
+              <option>Seminar Hall</option>
+              <option>Auditorium</option>
+              <option>Sports Ground</option>
+              <option>Parking Area</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="foundDescription">Description *</label>
+            <textarea id="foundDescription" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="foundContactName">Contact Name *</label>
+            <input type="text" id="foundContactName" required />
+          </div>
+          <div class="form-group">
+            <label for="foundContactEmail">Contact Email *</label>
+            <input type="email" id="foundContactEmail" required />
+          </div>
+          <div class="form-group">
+            <label for="foundContactPhone">Contact Phone *</label>
+            <input type="tel" id="foundContactPhone" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Found Report</button>
+          <p class="form-error hidden" id="foundFormError">Please fill all the required fields correctly.</p>
+        </form>
+
+        <p class="success-msg hidden" id="foundSuccess">Thank you! Your found report has been submitted. The owner can now contact you.</p>
+      </div>
+    </section>
+
+    <!-- MY REPORTS -->
+    <section class="page hidden" id="page-my-reports">
+      <div class="container">
+        <h1 class="page-title">My Reports</h1>
+        <p class="page-subtitle">Reports you have submitted from this browser.</p>
+        <div class="items-grid" id="myReportsGrid"></div>
+        <p class="empty-state hidden" id="myReportsEmpty">You haven't reported any items yet.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <img src="assets/aitr-logo.png" alt="AITR Logo" class="footer-logo" />
+      <div>
+        <p class="footer-title">Campus Lost &amp; Found</p>
+        <p class="footer-text">A project by CSI AITR Student Chapter &middot; Acropolis Institute of Technology &amp; Research</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ITEM DETAILS MODAL -->
+  <div class="modal-overlay hidden" id="itemModal">
+    <div class="modal">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
